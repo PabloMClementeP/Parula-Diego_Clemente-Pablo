@@ -1,5 +1,7 @@
 package com.parcialBackend.dao;
 
+import java.util.List;
+
 public interface IDao<T> {
     // guardar - buscar - eliminar - listar
 
@@ -9,5 +11,5 @@ public interface IDao<T> {
 
     void eliminar(int id);
 
-    T buscarPorId(int id);
+    List<T> listarTodos();
 }
