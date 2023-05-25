@@ -6,19 +6,19 @@ import com.parcialBackend.entity.Odontologo;
 import java.util.List;
 
 public class OdontologoService {
-    private IDao<Odontologo> genericIDao;
+    private IDao<Odontologo> IDao;
 
-    public OdontologoService(IDao<Odontologo> genericIDao){
-        this.genericIDao = genericIDao;
+    public OdontologoService(IDao<Odontologo> IDao){
+        this.IDao = IDao;
     }
 
-    public Odontologo guardarGeneric(Odontologo generic){
-        return genericIDao.guardar(generic);
+    public Odontologo guardar(Odontologo odontologo){
+        return IDao.registrarOdontologo(odontologo);
     }
 
 
-    public List<Odontologo> listarGenerics() {
-        return genericIDao.listarTodos();
+    public List<Odontologo> listar() {
+        return IDao.listarOdontologos();
     }
 
 
