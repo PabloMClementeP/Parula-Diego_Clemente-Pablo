@@ -1,20 +1,20 @@
 package com.parcialBackend.dao.impl;
 
 import com.parcialBackend.dao.IDao;
-import com.parcialBackend.entity.Generic;
+import com.parcialBackend.entity.Odontologo;
 
 import java.util.List;
 
-public class GenericDaoEnMemoria implements IDao<Generic> {
+public class GenericDaoEnMemoria implements IDao<Odontologo> {
 
-    private List<Generic> genericRepositorio;
+    private List<Odontologo> genericRepositorio;
 
-    public GenericDaoEnMemoria(List<Generic> estudianteRepositorio) {
+    public GenericDaoEnMemoria(List<Odontologo> estudianteRepositorio) {
         this.genericRepositorio = estudianteRepositorio;
     }
 
     @Override
-    public Generic guardar(Generic generic) {
+    public Odontologo guardar(Odontologo generic) {
         genericRepositorio.add(generic);
 
         return generic;
@@ -22,12 +22,12 @@ public class GenericDaoEnMemoria implements IDao<Generic> {
 
 
     @Override
-    public Generic buscar(int id) {
-        Generic genericBuscado = null;
+    public Odontologo buscar(int id) {
+        Odontologo genericBuscado = null;
         int i = 0;
         while(i < genericRepositorio.size() && genericBuscado == null){
 
-            Generic generic = genericRepositorio.get(i);
+            Odontologo generic = genericRepositorio.get(i);
 
             if(generic.getId() == id) {
                 genericBuscado = generic;
@@ -41,13 +41,13 @@ public class GenericDaoEnMemoria implements IDao<Generic> {
     @Override
     public void eliminar(int id) {
 
-        Generic generic = buscar(id);
+        Odontologo generic = buscar(id);
 
         genericRepositorio.remove(generic);
     }
 
     @Override
-    public List<Generic> listarTodos() {
+    public List<Odontologo> listarTodos() {
         return genericRepositorio;
     }
 

@@ -2,19 +2,18 @@ package com.parcialBackend.dao.impl;
 
 import com.parcialBackend.dao.H2Connection;
 import com.parcialBackend.dao.IDao;
-import com.parcialBackend.entity.Generic;
+import com.parcialBackend.entity.Odontologo;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.List;
 
-public class GenericDaoH2 implements IDao<Generic> {
+public class GenericDaoH2 implements IDao<Odontologo> {
 
     private static final Logger LOGGER = Logger.getLogger(GenericDaoH2.class);
 
     @Override
-    public Generic guardar(Generic generic) {
+    public Odontologo guardar(Odontologo generic) {
         Connection connection = null;
         try {
             connection = H2Connection.getConnection();
@@ -58,9 +57,9 @@ public class GenericDaoH2 implements IDao<Generic> {
     }
 
     @Override
-    public Generic buscar(int id) {
+    public Odontologo buscar(int id) {
         Connection connection = null;
-        Generic generic = null;
+        Odontologo generic = null;
         try {
             connection = H2Connection.getConnection();
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM PACIENTES WHERE ID = ?");
@@ -91,15 +90,15 @@ public class GenericDaoH2 implements IDao<Generic> {
     }
 
     @Override
-    public List<Generic> listarTodos() {
+    public List<Odontologo> listarTodos() {
         return null;
     }
 
 
     // Metodo para guardar en el objeto el contenido del resulSet
-    private Generic crearObjetoGeneric(ResultSet resultSet) throws SQLException {
+    private Odontologo crearObjetoGeneric(ResultSet resultSet) throws SQLException {
         int idPaciente = resultSet.getInt("id");
         String nombrePaciente = resultSet.getString("nombre");
-        return new Generic(idPaciente, nombrePaciente);
+        return new Odontologo(idPaciente, nombrePaciente);
     }
 }
