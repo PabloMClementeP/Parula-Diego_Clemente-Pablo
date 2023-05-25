@@ -3,13 +3,9 @@ package com.parcialBackend.dao;
 import java.util.List;
 
 public interface IDao<T> {
-    // guardar - buscar - eliminar - listar
+    // guardar - listar
 
-    T guardar(T t);
+    T registrarOdontologo(T var1);
 
-    T buscar(int id);
-
-    void eliminar(int id);
-
-    List<T> listarTodos();
+    List<T> listarOdontologos();
 }
