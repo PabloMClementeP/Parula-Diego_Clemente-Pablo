@@ -20,12 +20,12 @@ public class OdontologoDaoEnMemoria implements IDao<Odontologo> {
 
     public Odontologo registrarOdontologo(Odontologo odontologo) {
         this.odontologosRepository.add(odontologo);
-        LOGGER.info("Odontólogo guardado: " + String.valueOf(odontologo));
+        LOGGER.info("Odontólogo guardado: " + odontologo);
         return odontologo;
     }
 
     public List<Odontologo> listarOdontologos() {
-        LOGGER.info("Lista de todos los odontólogos registrados: " + String.valueOf(this.odontologosRepository));
+        LOGGER.info("Lista de todos los odontólogos registrados: " + (this.odontologosRepository);
         return this.odontologosRepository;
     }
 }

@@ -27,11 +27,13 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
         try {
             connection = H2Connection.getConnection();
             connection.setAutoCommit(false);
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO ODONTOLOGOS(MATRICULA, NOMBRE, APELLIDO) VALUES (?, ?, ?)", 1);
-            ps.setInt(1, odontologo.getMatricula());
-            ps.setString(2, odontologo.getNombre());
-            ps.setString(3, odontologo.getApellido());
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO ODONTOLOGOS(NOMBRE,APELLIDO,MATRICULA) VALUES (?, ?, ?)", 1);
+
+            ps.setString(1, odontologo.getNombre());
+            ps.setString(2, odontologo.getApellido());
+            ps.setInt(3, odontologo.getMatricula());
             ps.execute();
+
             ResultSet rs = ps.getGeneratedKeys();
 
             while(rs.next()) {
@@ -39,7 +41,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
             }
 
             connection.commit();
-            LOGGER.info("Se registro el odontólogo: " + String.valueOf(odontologo));
+            LOGGER.info("Se registro el odontólogo: " + odontologo);
         } catch (Exception ex) {
             LOGGER.error(ex.getMessage());
             ex.printStackTrace();
@@ -75,11 +77,11 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()) {
-                Odontologo odontologo = new Odontologo(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4));
+                Odontologo odontologo = new Odontologo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
                 odontologos.add(odontologo);
             }
 
-            LOGGER.info("Listado de los odontólogos registrados: " + String.valueOf(odontologos));
+            LOGGER.info("Listado de los odontólogos registrados: " + odontologos);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             e.printStackTrace();
