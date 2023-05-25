@@ -8,16 +8,18 @@ package com.parcialBackend.dao.impl;
 import com.parcialBackend.dao.H2Connection;
 import com.parcialBackend.dao.IDao;
 import com.parcialBackend.entity.Odontologo;
+import org.apache.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import org.apache.log4j.Logger;
 import java.util.List;
 
 public class OdontologoDaoH2 implements IDao<Odontologo> {
     private static final Logger LOGGER = Logger.getLogger(OdontologoDaoH2.class);
+
     public OdontologoDaoH2() {
     }
 
@@ -36,7 +38,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
 
             ResultSet rs = ps.getGeneratedKeys();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 odontologo.setId(rs.getInt(1));
             }
 
@@ -76,7 +78,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM ODONTOLOGOS");
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 Odontologo odontologo = new Odontologo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
                 odontologos.add(odontologo);
             }

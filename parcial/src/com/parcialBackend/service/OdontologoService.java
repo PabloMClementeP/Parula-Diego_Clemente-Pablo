@@ -8,11 +8,11 @@ import java.util.List;
 public class OdontologoService {
     private IDao<Odontologo> IDao;
 
-    public OdontologoService(IDao<Odontologo> IDao){
+    public OdontologoService(IDao<Odontologo> IDao) {
         this.IDao = IDao;
     }
 
-    public Odontologo guardar(Odontologo odontologo){
+    public Odontologo guardar(Odontologo odontologo) {
         return IDao.registrarOdontologo(odontologo);
     }
 

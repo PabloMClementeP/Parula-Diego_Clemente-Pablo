@@ -7,8 +7,9 @@ package com.parcialBackend.dao.impl;
 
 import com.parcialBackend.dao.IDao;
 import com.parcialBackend.entity.Odontologo;
-import java.util.List;
 import org.apache.log4j.Logger;
+
+import java.util.List;
 
 public class OdontologoDaoEnMemoria implements IDao<Odontologo> {
     private static final Logger LOGGER = Logger.getLogger(OdontologoDaoEnMemoria.class);
@@ -25,7 +26,7 @@ public class OdontologoDaoEnMemoria implements IDao<Odontologo> {
     }
 
     public List<Odontologo> listarOdontologos() {
-        LOGGER.info("Lista de todos los odontólogos registrados: " + (this.odontologosRepository);
+        LOGGER.info("Lista de todos los odontólogos registrados: " + (this.odontologosRepository));
         return this.odontologosRepository;
     }
 }
